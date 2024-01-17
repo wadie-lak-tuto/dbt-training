@@ -6,22 +6,19 @@
 
     Try changing "table" to "view" below
 */
+  
 
 {{ config(materialized='view') }}
 
 with source_data as (
 
-    select 1 as id
+    select 3 as id
     union all
-    select null as id
+    select 4 as id
 
 )
 
 select *
 from source_data
 
-/*
-    Uncomment the line below to remove records with null `id` values
-*/
-
--- where id is not null
+{{ source('source_name', 'object_name') }}
